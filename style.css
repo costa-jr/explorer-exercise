@@ -1,0 +1,277 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+  font-size: 62.5%;
+
+  --color-primary-bg: #f9f4fb;
+  --color-secondary-bg: linear-gradient(96deg, #343193 0%, #302c63 99.68%);
+  --color-terciary-bg: linear-gradient(96deg, #242090 0%, #221d5e 99.68%);
+
+  --color-hl: #b52184;
+  --color-tx: #312d64;
+}
+
+body,
+input,
+textarea,
+button {
+  background-color: var(--color-base-100);
+
+  font-family: "Mulish", sans-serif;
+  font-size: 1.6rem;
+  color: var(--color-tx);
+  text-wrap: pretty;
+}
+
+h1,
+h2 {
+  font-weight: 900;
+  color: var(--color-hl);
+  margin-bottom: 1.6rem;
+}
+
+h1 {
+  font-size: 3.2rem;
+}
+
+h2 {
+  font-size: 2.8rem;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+
+  text-align: center;
+}
+
+.container {
+  width: min(320px, 95%);
+  margin: 0 auto;
+}
+
+.astronaut {
+  max-width: 36.4rem;
+}
+
+.arrow-icon {
+  max-width: 5.8rem;
+  margin: 3.2rem auto 8.8rem;
+}
+
+.arrow-icon:hover {
+  cursor: pointer;
+
+  animation-name: updown;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+
+main section,
+footer {
+  background: linear-gradient(96deg, #343193 0%, #302c63 99.68%);
+  padding: 4.8rem 4rem;
+}
+
+.grid-wrapper {
+  display: grid;
+  gap: 4.8rem;
+}
+
+.card {
+  padding: 2.6rem;
+  border-radius: 1.6rem;
+
+  background-color: var(--color-primary-bg);
+
+  display: grid;
+  gap: 3.2rem;
+}
+
+/* .card img {
+  animation-name: updown;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+} */
+
+.yellow-planet {
+  animation: toside 1s forwards alternate infinite;
+}
+
+.blue-planet {
+  animation: updown 1s forwards alternate infinite;
+}
+
+.pink-planet {
+  animation: toside 1s forwards alternate-reverse infinite;
+}
+
+form .fields {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.contact {
+  padding: 4.8rem 0;
+}
+
+.stars {
+  display: none;
+}
+
+fieldset {
+  border: none;
+}
+
+.input-wrapper label {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  overflow: hidden;
+}
+
+.input-wrapper input,
+.input-wrapper textarea,
+.input-wrapper button {
+  padding: 1.2rem 4.4rem;
+  border-radius: 1.6rem;
+  border: 1.5px solid var(--color-tx);
+}
+
+.input-wrapper textarea {
+  padding: 1.2rem 1.4rem;
+  min-height: 16rem;
+}
+
+.input-wrapper input,
+.input-wrapper textarea {
+  width: 100%;
+}
+
+#name {
+  background: url(./assets/user-icon.svg) no-repeat left 1.4rem top 50%;
+}
+
+#email {
+  background: url(./assets/at-icon.svg) no-repeat left 1.4rem top 50%;
+}
+
+.input-wrapper button {
+  background: var(--color-secondary-bg);
+  color: var(--color-primary-bg);
+
+  transition-property: transform;
+  transition-duration: 200ms;
+  transition-delay: 0s;
+  transition-timing-function: linear;
+}
+
+.input-wrapper button:hover {
+  background: var(--color-terciary-bg);
+  color: var(--color-primary-bg);
+  cursor: pointer;
+
+  transform: scale(1.1);
+}
+
+footer {
+  text-align: center;
+  color: var(--color-primary-bg);
+}
+
+@media (min-width: 1020px) {
+  .container {
+    width: min(1020px, 100%);
+  }
+
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.6rem;
+
+    height: 50vh;
+    text-align: start;
+
+    position: relative;
+  }
+
+  .astronaut {
+    max-width: 48rem;
+    position: absolute;
+    top: 0px;
+    right: 4rem;
+
+    order: 1;
+
+    animation-name: move;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+  }
+
+  .arrow-icon {
+    max-width: 5.8rem;
+    margin: 3.2rem auto 0rem;
+  }
+
+  .grid-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 4.8rem;
+  }
+
+  .contact {
+    display: flex;
+    align-items: center;
+  }
+
+  .contact-form {
+    width: 50%;
+  }
+
+  .stars {
+    position: absolute;
+    right: 0px;
+    z-index: -1;
+    display: inline;
+  }
+}
+
+@keyframes move {
+  100% {
+    transform: scale(1.1) rotate(2deg);
+  }
+}
+
+@keyframes updown {
+  100% {
+    transform: translateY(20%);
+  }
+}
+
+@keyframes toside {
+  100% {
+    transform: rotateZ(10deg);
+  }
+}
